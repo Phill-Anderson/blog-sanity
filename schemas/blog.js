@@ -31,7 +31,17 @@ export default {
         {
             title: "Блогийн зураг",
             name: "cover_image",
-            type: "image"
+            type: "image",
+            fields: [
+                {
+                    title: "Зургийн тайлбар",
+                    name: "alt",
+                    type: "text",
+                    options: {
+                        isHighlighted: true,
+                    },
+                }
+            ],
         },
         {
             name: "content",
@@ -43,8 +53,18 @@ export default {
                 },
                 {
                     type: "image",
+                    fields: [
+                        {
+                            title: "Зургийн тайлбар",
+                            name: "alt",
+                            type: "text",
+                        }
+                    ],
                 }, {
                     type: "code",
+                    options: {
+                        withFilename: true,
+                    },
                 }
             ]
         },
