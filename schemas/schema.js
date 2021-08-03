@@ -5,6 +5,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // We import object and document schemas
 import blog from './blog'
+import publisher from './publisher'
 import blockContent from './blockContent'
 import crewMember from './crewMember'
 import castMember from './castMember'
@@ -34,5 +35,6 @@ export default createSchema({
     castMember,
     crewMember,
     blog,
+    publisher,
   ]),
 })

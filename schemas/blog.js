@@ -7,78 +7,60 @@ export default {
     icon,
     fields: [
         {
-            name: 'title',
-            title: 'Title',
-            type: 'string',
+            title: "Блогийн гарчиг",
+            name: "title",
+            type: "string",
+            description: "80 тэмдэгтээс бүү хэтрүүлээрэй",
+            validation: (Rule) => [
+                Rule.required().min(10).warning("Гарчиг хамгийн багадаа 10 үсгээс тогтоно"),
+                Rule.required().max(80).error("Гарчиг 80 тэмдэгтээс хэтрэхгүй байх ёстой"),
+            ],
         },
         {
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
+            title: "Дэд гарчиг",
+            name: "subtitle",
+            type: "string",
+            description: "Блогийн төрлийг текстээр бичих",
+        },
+        {
+            title: "Нийтлэлч",
+            name: "publisher",
+            type: "reference",
+            to: [{ type: "publisher" }],
+        },
+        {
+            title: "Блогийн зураг",
+            name: "cover_image",
+            type: "image"
+        },
+        {
+            name: "content",
+            type: "array",
+            title: "Блогийн агуулга",
+            of: [
+                {
+                    type: "block",
+                },
+                {
+                    type: "image",
+                }, {
+                    type: "code",
+                }
+            ]
+        },
+        {
+            title: "Огноо",
+            name: "date",
+            type: "datetime",
+        },
+        {
+            title: "Слаг",
+            name: "slug",
+            type: "slug",
             options: {
-                source: 'title',
-                maxLength: 100,
-            },
-        },
-        {
-            name: 'overview',
-            title: 'Overview',
-            type: 'blockContent',
-        },
-        {
-            name: 'releaseDate',
-            title: 'Release date',
-            type: 'datetime',
-        },
-        {
-            name: 'externalId',
-            title: 'External ID',
-            type: 'number',
-        },
-        {
-            name: 'popularity',
-            title: 'Popularity',
-            type: 'number',
-        },
-        {
-            name: 'poster',
-            title: 'Poster Image',
-            type: 'image',
-            options: {
-                hotspot: true,
-            },
-        },
-        {
-            name: 'castMembers',
-            title: 'Cast Members',
-            type: 'array',
-            of: [{ type: 'castMember' }],
-        },
-        {
-            name: 'crewMembers',
-            title: 'Crew Members',
-            type: 'array',
-            of: [{ type: 'crewMember' }],
-        },
-    ],
-    preview: {
-        select: {
-            title: 'title',
-            date: 'releaseDate',
-            media: 'poster',
-            castName0: 'castMembers.0.person.name',
-            castName1: 'castMembers.1.person.name',
-        },
-        prepare(selection) {
-            const year = selection.date && selection.date.split('-')[0]
-            const cast = [selection.castName0, selection.castName1].filter(Boolean).join(', ')
-
-            return {
-                title: `${selection.title} ${year ? `(${year})` : ''}`,
-                date: selection.date,
-                subtitle: cast,
-                media: selection.media,
+                source: "title",
+                slugify: (input) => input.toLowerCase().replace(/\s+/g, "-").slice(0, 200),
             }
-        },
-    },
+        }
+    ],
 }
