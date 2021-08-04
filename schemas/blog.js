@@ -61,6 +61,23 @@ export default {
                             title: "Зургийн тайлбар",
                             name: "alt",
                             type: "text",
+                            options: {
+                                isHighlighted: true,
+                            },
+                        },
+                        {
+                            title: "Зургийн байрлал",
+                            name: "position",
+                            type: "string",
+                            options: {
+                                isHighlighted: true,
+                                list: [
+                                    { title: 'Голлуулж', value: 'center' },
+                                    { title: 'Зүүн талд', value: 'left' },
+                                    { title: 'Баруун талд', value: 'right' },
+                                ],
+                                layout: "radio",
+                            },
                         }
                     ],
                     options: {
