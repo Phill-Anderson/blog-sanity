@@ -1,4 +1,4 @@
-import { MdLocalMovies as icon } from 'react-icons/md'
+import { FaUserEdit as icon } from 'react-icons/fa'
 
 export default {
     title: 'Нийтлэгч',

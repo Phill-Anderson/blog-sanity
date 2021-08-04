@@ -1,10 +1,10 @@
-import { MdLocalMovies as icon } from 'react-icons/md'
+import { ImBooks } from 'react-icons/im'
 
 export default {
     name: 'blog',
     title: 'Блог',
     type: 'document',
-    icon,
+    icon: ImBooks,
     fields: [
         {
             title: "Блогийн гарчиг",
@@ -42,6 +42,9 @@ export default {
                     },
                 }
             ],
+            options: {
+                hotspot: true,
+            }
         },
         {
             name: "content",
@@ -60,6 +63,9 @@ export default {
                             type: "text",
                         }
                     ],
+                    options: {
+                        hotspot: true
+                    }
                 }, {
                     type: "code",
                     options: {
