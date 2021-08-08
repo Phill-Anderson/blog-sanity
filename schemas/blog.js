@@ -17,10 +17,10 @@ export default {
             ],
         },
         {
-            title: "Дэд гарчиг",
-            name: "subtitle",
-            type: "string",
-            description: "Блогийн төрлийг текстээр бичих",
+            title: "Категор",
+            name: "category",
+            type: "reference",
+            to: [{ type: "category" }],
         },
         {
             title: "Нийтлэлч",
